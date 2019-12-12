@@ -43,8 +43,8 @@ one.Init(bot, "eval1", "Owner", []string{"ev1"})
 two.Init(bot, "eval2", "Owner", []string{"ev2"})
 ```
 
-## TODO
-Add more backends.
+## More
+Feel free to suggest or contribute new backends.
 
 ## License
 [MIT License](LICENSE)
