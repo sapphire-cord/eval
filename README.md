@@ -9,6 +9,7 @@ If you are coming from discord.js you sure heard of it, in Go however the langua
 ## Install
 Install your preferred backend and call some initialization in your bot, the available backends currently are:
 - **goja** - JavaScript VM in Go, supports ES5 only.
+- **otto** - JavaScript VM in Go, supports ES5 only, lighter than Goja with no dependencies but slower.
 
 ```sh
 $ go get github.com/sapphire-cord/eval/<your-backend>

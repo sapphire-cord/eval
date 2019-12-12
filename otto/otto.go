@@ -2,15 +2,15 @@ package eval
 
 import (
   "github.com/sapphire-cord/sapphire"
-  "github.com/dop251/goja"
+  "github.com/robertkrimen/otto"
 )
 
 func Eval(ctx *sapphire.CommandContext) {
-  vm := goja.New()
+  vm := otto.New()
   vm.Set("ctx", ctx)
   vm.Set("bot", ctx.Bot)
   vm.Set("session", ctx.Session)
-  value, err := vm.RunString(ctx.JoinedArgs())
+  value, err := vm.Run(ctx.JoinedArgs())
   if err != nil {
     ctx.CodeBlock("js", "%s", err)
     return
@@ -20,8 +20,8 @@ func Eval(ctx *sapphire.CommandContext) {
 
 func Init(bot *sapphire.Bot, name, category string, aliases []string) {
   bot.AddCommand(sapphire.NewCommand(name, category, Eval).
-    AddAliases(aliases...).
-    SetDescription("Evaluates arbitrary JavaScript").
     SetUsage("<code:string...>").
+    SetDescription("Evaluates arbitrary JavaScript").
+    AddAliases(aliases...).
     SetOwnerOnly(true))
 }
