@@ -28,7 +28,7 @@ func Eval(ctx *sapphire.CommandContext) {
     return
   }
 
-  ctx.CodeBlock("go", "%+v\n%s", value, stdout.String())
+  ctx.CodeBlock("go", "%s%+v", stdout.String(), value)
 }
 
 func Init(bot *sapphire.Bot, name, category string, aliases []string) {

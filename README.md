@@ -11,6 +11,7 @@ Install your preferred backend and call some initialization in your bot, the ava
 - **goja** - JavaScript VM in Go, supports ES5 only.
 - **otto** - JavaScript VM in Go, supports ES5 only, lighter than Goja with no dependencies but slower.
 - **anko** - A Go like interpreter, this is the closest thing you can get to a Go eval.
+- **gopher-lua** - Lua VM in Go.
 
 ```sh
 $ go get github.com/sapphire-cord/eval/<your-backend>
@@ -42,6 +43,14 @@ import (
 one.Init(bot, "eval1", "Owner", []string{"ev1"})
 two.Init(bot, "eval2", "Owner", []string{"ev2"})
 ```
+
+## Using the command
+After initialized call the command with your prefix + whatever name you choosed at initialization and pass it a script of the choosen backend language, additionally these extra variables are exposed globally in the context of eval to make it more useful:
+- `ctx` The command context.
+- `bot` Alias to ctx.Bot
+- `session` Alias to ctx.Session
+
+Which lets you do almost anything you can do in Go, only dynamically from Discord!
 
 ## More
 Feel free to suggest or contribute new backends.
