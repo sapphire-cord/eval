@@ -29,7 +29,7 @@ eval.Init(bot, "eval", "Owner", []string{"ev"})
 Notes:
 - The first argument is the bot instance, the second is the category, the third is the command name to use, the fourth is the aliases.
 - Again replace `<your-backend>` with the backend you previously installed.
-- Each backend exposes the package with the name `eval` which can conflict if you want to use multiple backends, prefer to use go import aliases, **see below**
+- Each backend exposes the package with the name `eval` which can conflict if you want to use multiple backends, prefer to use go's import aliases. (see below)
 
 ### Using multiple backends
 Sometimes you want to have more eval backends, we made it easy by allowing you to specify the name, category and aliases when registering so it doesn't conflict, now only the packages conflict but you can use an import alias:
@@ -45,12 +45,14 @@ two.Init(bot, "eval2", "Owner", []string{"ev2"})
 ```
 
 ## Using the command
-After initialized call the command with your prefix + whatever name you choosed at initialization and pass it a script of the choosen backend language, additionally these extra variables are exposed globally in the context of eval to make it more useful:
+After initialized, call the command with your prefix + whatever name you choosed at initialization and pass it a script of the choosen backend language, additionally these extra variables are exposed globally in the context of eval to make it more useful:
 - `ctx` The command context.
 - `bot` Alias to ctx.Bot
 - `session` Alias to ctx.Session
 
 Which lets you do almost anything you can do in Go, only dynamically from Discord!
+
+The eval backends also strip off codeblocks from the input so feel free to put your code inside a fancy codeblock.
 
 ## More
 Feel free to suggest or contribute new backends.

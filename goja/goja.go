@@ -2,6 +2,7 @@ package eval
 
 import (
   "github.com/sapphire-cord/sapphire"
+  "github.com/sapphire-cord/eval/utils"
   "github.com/dop251/goja"
 )
 
@@ -10,11 +11,14 @@ func Eval(ctx *sapphire.CommandContext) {
   vm.Set("ctx", ctx)
   vm.Set("bot", ctx.Bot)
   vm.Set("session", ctx.Session)
-  value, err := vm.RunString(ctx.JoinedArgs())
+
+  value, err := vm.RunString(utils.StripCodeBlock(ctx.JoinedArgs()))
+
   if err != nil {
     ctx.CodeBlock("js", "%s", err)
     return
   }
+
   ctx.CodeBlock("js", "%s", value)
 }
 

@@ -2,6 +2,7 @@ package eval
 
 import (
   "github.com/sapphire-cord/sapphire"
+  "github.com/sapphire-cord/eval/utils"
   "github.com/mattn/anko/env"
   "github.com/mattn/anko/vm"
   "bytes"
@@ -22,7 +23,7 @@ func Eval(ctx *sapphire.CommandContext) {
   e.Define("bot", ctx.Bot)
   e.Define("session", ctx.Session)
 
-  value, err := vm.Execute(e, nil, ctx.JoinedArgs())
+  value, err := vm.Execute(e, nil, utils.StripCodeBlock(ctx.JoinedArgs()))
   if err != nil {
     ctx.CodeBlock("go", "%v\n", err)
     return
