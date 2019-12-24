@@ -12,6 +12,7 @@ Install your preferred backend and call some initialization in your bot, the ava
 - **otto** - JavaScript VM in Go, supports ES5 only, lighter than Goja with no dependencies but slower.
 - **anko** - A Go like interpreter, this is the closest thing you can get to a Go eval.
 - **gopher-lua** - Lua VM in Go.
+- **starlark** - A dialect of Python by Google.
 
 ```sh
 $ go get github.com/sapphire-cord/eval/<your-backend>
