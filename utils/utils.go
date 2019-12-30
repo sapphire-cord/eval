@@ -2,7 +2,7 @@
 package utils
 
 import (
-  "regexp"
+	"regexp"
 )
 
 // This regex is probably ugly but it works so far.
@@ -12,12 +12,16 @@ var CodeBlockRegex = regexp.MustCompile("^```(?:\\S*)\n?((?:.|\\s)*)\n?```$")
 
 // StripCodeBlocks strips leading and trailing codeblock characters in the input source.
 func StripCodeBlock(src string) string {
-  if len(src) == 0 { return "" }
+	if len(src) == 0 {
+		return ""
+	}
 
-  match := CodeBlockRegex.FindStringSubmatch(src)
+	match := CodeBlockRegex.FindStringSubmatch(src)
 
-  // If no codeblocks matched just return the input as is.
-  if match == nil { return src }
+	// If no codeblocks matched just return the input as is.
+	if match == nil {
+		return src
+	}
 
-  return match[1]
+	return match[1]
 }
